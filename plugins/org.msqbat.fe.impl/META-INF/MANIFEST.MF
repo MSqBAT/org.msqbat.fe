@@ -6,6 +6,15 @@ Bundle-Version: 4.0.0.qualifier
 Bundle-Activator: org.msqbat.fe.impl.Activator
 Bundle-Vendor: SILICOSCIENCES
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Import-Package: org.osgi.framework;version="1.3.0"
+Import-Package: net.sf.jranges.range.doublerange;version="0.6.2.qualifier",
+ net.sf.kerner.utils;version="1.2.4.qualifier",
+ net.sf.kerner.utils.collections.list;version="1.1.2.qualifier",
+ net.sf.kerner.utils.collections.map;version="1.1.2.qualifier",
+ net.sf.kerner.utils.math;version="1.2.4.qualifier",
+ org.osgi.framework;version="1.3.0",
+ org.slf4j;version="1.7.2"
 Bundle-ActivationPolicy: lazy
-Require-Bundle: org.msqbat.fe.api;bundle-version="4.0.0"
+Require-Bundle: org.msqbat.fe.api;bundle-version="4.0.0",
+ org.msqbat.datamodel.api,
+ org.msqbat.datamodel.impl
+Export-Package: org.msqbat.fe.impl
