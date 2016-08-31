@@ -1,0 +1,11 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: MSqBAT Feature Extraction Default Implementation
+Bundle-SymbolicName: org.msqbat.fe.impl
+Bundle-Version: 4.0.0.qualifier
+Bundle-Activator: org.msqbat.fe.impl.Activator
+Bundle-Vendor: SILICOSCIENCES
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Import-Package: org.osgi.framework;version="1.3.0"
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.msqbat.fe.api;bundle-version="4.0.0"
