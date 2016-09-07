@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 import org.msqbat.datamodel.api.ion.IonMSqBAT;
 import org.msqbat.datamodel.api.ion.TransformerIon2Mz;
 import org.msqbat.datamodel.api.ion.UtilIon;
-import org.msqbat.datamodel.api.peak.PeakMSqBAT;
+import org.msqbat.datamodel.api.peak.FeatureMSqBAT;
 import org.msqbat.datamodel.api.sample.SampleIons;
 import org.msqbat.datamodel.impl.PeakSimple;
 import org.msqbat.datamodel.impl.SampleImpl;
@@ -73,7 +73,7 @@ public class TightenerMass implements FeatureTightener {
 		return this;
 	}
 
-	public synchronized List<PeakMSqBAT> tighten(final PeakMSqBAT f) {
+	public synchronized List<FeatureMSqBAT> tighten(final FeatureMSqBAT f) {
 		final List<IonMSqBAT> result1 = UtilList.newList();
 		final List<IonMSqBAT> result2 = UtilList.newList();
 		if (needsToTighten(f.getIons())) {
@@ -94,12 +94,12 @@ public class TightenerMass implements FeatureTightener {
 			if (result1.isEmpty() || result2.isEmpty()) {
 				throw new RuntimeException();
 			}
-			final List<PeakMSqBAT> result = new ArrayList<PeakMSqBAT>(2);
+			final List<FeatureMSqBAT> result = new ArrayList<FeatureMSqBAT>(2);
 			result.add(new PeakSimple(result1));
 			result.add(new PeakSimple(result2));
 			return result;
 		} else {
-			final List<PeakMSqBAT> result = new ArrayList<PeakMSqBAT>(1);
+			final List<FeatureMSqBAT> result = new ArrayList<FeatureMSqBAT>(1);
 			result.add(f);
 			return result;
 		}
@@ -114,7 +114,7 @@ public class TightenerMass implements FeatureTightener {
 		final SampleImpl sampleNew = new SampleImpl();
 		sampleNew.setName(sample.getName() + "-tm");
 
-		final List<List<PeakMSqBAT>> peaks = sample.getIons().stream().map(p -> tighten((PeakMSqBAT) p))
+		final List<List<FeatureMSqBAT>> peaks = sample.getIons().stream().map(p -> tighten((FeatureMSqBAT) p))
 				.collect(Collectors.toList());
 		peaks.stream().forEach(p -> sampleNew.addIons(p));
 
