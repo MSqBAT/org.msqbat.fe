@@ -1,15 +1,15 @@
 package org.msqbat.fe.impl;
 
-import org.msqbat.datamodel.api.provider.ProviderScanNumber;
+import org.msqbat.datamodel.api.ion.IonMSqBAT;
 
-public class SplittingPeakFracIndex extends SplittingAbstract<ProviderScanNumber, Integer> {
+public class SplittingPeakFracIndex extends SplittingAbstract<IonMSqBAT, Integer> {
 
-	public SplittingPeakFracIndex(final ProviderScanNumber peak) {
+	public SplittingPeakFracIndex(final IonMSqBAT peak) {
 		super(peak, peak.getScanNumber());
 	}
 
 	@Override
-	public int compareTo(final Splitting<ProviderScanNumber, Integer> o) {
+	public int compareTo(final Splitting<IonMSqBAT, Integer> o) {
 		return Integer.valueOf(getSecond()).compareTo(Integer.valueOf(o.getSecond()));
 	}
 

@@ -30,7 +30,7 @@ public class FeatureSplitterByFractionIndex implements FeatureSplitter {
 
 	private final static TransformerSplittingToPeak TRANSFORMER_SPLITTING_TO_PEAK = new TransformerSplittingToPeak();
 
-	static List<? extends SplittingPeakFracIndex> getLower(final List<? extends SplittingPeakFracIndex> splittings,
+	static List<SplittingPeakFracIndex> getLower(final List<? extends SplittingPeakFracIndex> splittings,
 			final Integer cutIndex) {
 		final List<SplittingPeakFracIndex> lower = UtilList.newList();
 		for (@SuppressWarnings("rawtypes")
@@ -52,12 +52,12 @@ public class FeatureSplitterByFractionIndex implements FeatureSplitter {
 		return lower;
 	}
 
-	static List<List<? extends SplittingPeakFracIndex>> splitSplittings(
-			final List<? extends SplittingPeakFracIndex> splittings, final List<Integer> cutIndices) {
+	static List<List<SplittingPeakFracIndex>> splitSplittings(final List<SplittingPeakFracIndex> splittings,
+			final List<Integer> cutIndices) {
 
-		final List<? extends SplittingPeakFracIndex> splittingsCopy = UtilList.newList(splittings);
+		final List<SplittingPeakFracIndex> splittingsCopy = UtilList.newList(splittings);
 
-		final List<List<? extends SplittingPeakFracIndex>> splittingsNew = UtilList.newList();
+		final List<List<SplittingPeakFracIndex>> splittingsNew = UtilList.newList();
 		if (cutIndices.isEmpty()) {
 			splittingsNew.add(splittings);
 		} else {
@@ -68,7 +68,7 @@ public class FeatureSplitterByFractionIndex implements FeatureSplitter {
 		}
 
 		final Collection<SplittingPeakFracIndex> doubleCheck = UtilCollection.newCollection();
-		for (final List<? extends SplittingPeakFracIndex> i : splittingsNew) {
+		for (final List<SplittingPeakFracIndex> i : splittingsNew) {
 			doubleCheck.addAll(i);
 		}
 
@@ -167,10 +167,9 @@ public class FeatureSplitterByFractionIndex implements FeatureSplitter {
 			throw new ExceptionRuntimeProperty(p);
 		}
 
-		for (final List<? extends SplittingPeakFracIndex> s : splitSplittings(splittings, cutIndices)) {
+		for (final List<SplittingPeakFracIndex> s : splitSplittings(splittings, cutIndices)) {
 			if (!s.isEmpty()) {
-				result.add(TRANSFORMER_SPLITTING_TO_PEAK
-						.transformCollection((Collection<? extends Splitting<IonMSqBAT, ?>>) s));
+				result.add(TRANSFORMER_SPLITTING_TO_PEAK.transformCollection(s));
 			}
 		}
 
