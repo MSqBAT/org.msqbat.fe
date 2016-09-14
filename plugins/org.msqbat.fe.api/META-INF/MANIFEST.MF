@@ -3,13 +3,14 @@ Bundle-ManifestVersion: 2
 Bundle-Name: MSqBAT Feature Extraction API
 Bundle-SymbolicName: org.msqbat.fe.api
 Bundle-Version: 4.0.0.qualifier
-Bundle-Activator: org.msqbat.fe.api.Activator
 Bundle-Vendor: SILICOSCIENCES
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Import-Package: net.sf.kerner.utils.collections.list;version="1.1.2.qualifier",
+Import-Package: net.sf.kerner.utils.collections.list,
  org.osgi.framework;version="1.3.0"
 Bundle-ActivationPolicy: lazy
-Require-Bundle: org.msqbat.datamodel.api;bundle-version="4.0.0",
- net.sf.kerner.utils;bundle-version="1.2.4"
+Require-Bundle: org.msqbat.datamodel.api,
+ net.sf.kerner.utils,
+ org.msqbat.datamodel.impl,
+ net.sf.kerner.utils.collections
 Export-Package: org.msqbat.fe.api,
  org.msqbat.fe.api.exception
